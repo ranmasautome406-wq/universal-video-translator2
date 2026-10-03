@@ -1,0 +1,6 @@
+.env
+backend/.env
+backend/data
+backend/outputs/*
+backend/uploads/*
+node_modules
