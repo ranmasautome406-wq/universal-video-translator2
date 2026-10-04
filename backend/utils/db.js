@@ -2,8 +2,11 @@ import Database from 'better-sqlite3';
 import path from 'node:path';
 import { config } from './config.js';
 
+// SQLite database path
 const dbPath = path.resolve(config.dbPath);
 
+// Open/create the database
+// The data directory already exists, so we don't need mkdirSync().
 export const db = new Database(dbPath);
 
 db.pragma('journal_mode = WAL');
