@@ -1,19 +1,10 @@
 import Database from 'better-sqlite3';
-import fs from 'node:fs';
 import path from 'node:path';
 import { config } from './config.js';
 
-// Get the database directory
-const dbDir = path.dirname(path.resolve(config.dbPath));
+const dbPath = path.resolve(config.dbPath);
 
-// Create the directory safely.
-// recursive:true prevents EEXIST errors if the directory already exists.
-fs.mkdirSync(dbDir, {
-  recursive: true,
-});
-
-// Create/open SQLite database
-export const db = new Database(path.resolve(config.dbPath));
+export const db = new Database(dbPath);
 
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
