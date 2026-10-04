@@ -61,3 +61,4 @@ export function log(level, message) {
   try { db.prepare('INSERT INTO logs(level,message) VALUES(?,?)').run(level, String(message).slice(0, 500)); } catch { /* ignore */ }
   if (level === 'error') console.error(`[${level}] ${message}`);
 }
+
